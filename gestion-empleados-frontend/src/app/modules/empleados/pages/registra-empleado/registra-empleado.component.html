@@ -1,0 +1,34 @@
+<div class="col-md-6 offset-3">
+    <h3 class="text-center">Registro de empleado</h3>
+    <form [formGroup]="empleadoForm" (ngSubmit)="saveEmpleado()">
+  
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input formControlName="nombre" type="text" class="form-control" placeholder="Ingrese nombre" [attr.required]="true">
+        <div *ngIf="empleadoForm.controls['nombre'].invalid && (empleadoForm.controls['nombre'].dirty || empleadoForm.controls['nombre'].touched)">
+          <div class="alert alert-danger p-1" *ngIf="empleadoForm.controls['nombre'].hasError('required')">El nombre es requerido</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="apellido">Apellido</label>
+        <input formControlName="apellido" type="text" class="form-control" placeholder="Ingrese apellido" [attr.required]="true">
+        <div *ngIf="empleadoForm.controls['apellido'].invalid && (empleadoForm.controls['apellido'].dirty || empleadoForm.controls['apellido'].touched)">
+          <div class="alert alert-danger p-1" *ngIf="empleadoForm.controls['apellido'].hasError('required')">El apellido es requerido</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input formControlName="email" type="email" class="form-control" placeholder="Ingrese email" [attr.required]="true">
+        <div *ngIf="empleadoForm.controls['email'].invalid && (empleadoForm.controls['email'].dirty || empleadoForm.controls['email'].touched)">
+          <div *ngIf="empleadoForm.controls['email'].hasError('required')">El email es requerido</div>
+          <div class="alert alert-danger p-1" *ngIf="empleadoForm.controls['email'].hasError('email')">Ingrese un email válido</div>
+        </div>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+  </div>
+  
+  
